@@ -15,6 +15,7 @@ VERSION=2.137
 CONFIG_FILENAME="hsv.conf"
 REPORT_DIR="../reports/"
 
+
 DUMP_CACHE_TO_JOURNALCTL='*/5 * * * * pkill -USR1 systemd-resolve'
 REDIRECT_CACHE_TO_LOG="*/5 * * * * sh -c 'journalctl -o short-iso --since \"5 minutes ago\" -u systemd-resolved  >> /var/log/hsv.log'"
 REPORT_CONSTRUCTION_CRONJOB="1 7 HSVreport gracjangrzech/IdeaProjects/HistorySupervisor/src/reportConstructor.sh 2>&1"
@@ -44,7 +45,7 @@ echoHelp () {
 }
 
 echoVersion () {
-  echo "Version: $VERSION"
+  echo "History Supervisor - Version: $VERSION"
 }
 
 echoInvalidArgument () {

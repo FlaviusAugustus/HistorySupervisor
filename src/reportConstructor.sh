@@ -11,11 +11,13 @@
 # Licensed under GPL (see /usr/share/common-licenses/GPL for more details
 # or contact # the Free Software Foundation for a copy)
 
-CONFIG_FILENAME="/home/gracjangrzech/IdeaProjects/HistorySupervisor/src/hsv.conf"
-REPORT_DIR="/home/gracjangrzech/IdeaProjects/HistorySupervisor/reports/"
-
+CONFIG_FILENAME="hsv.conf"
+REPORT_DIR="../reports/"
 
 readarray -t keywords < $CONFIG_FILENAME
+if [ ${#keywords[@]} == 0 ]; then
+  exit 0
+fi
 sed -i '/^--/d' /var/log/hsv.log
 while [ -s /var/log/hsv.log ]; do
   filename="$(head -n 1 /var/log/hsv.log | cut -d " " -f 1 | sed 's/T.*//')"
